@@ -2,7 +2,7 @@
 
 # IDEAS ON HOW TO MOVE ON
 
-- [ ] download all files and push them
+- [ ] Continue download from the table mesh
 - [ ] modify the scene
 - [ ] write some controls to control the robotic arm 
 - [ ] Profit?
