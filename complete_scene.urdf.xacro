@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<robot name="ur_table_world" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="world"/>
+
+  <xacro:include filename="$(find robot_support_description)/urdf/ur_table_description.urdf.xacro" />
+
+  <!-- Instantiate the table -->
+  <xacro:ur_table parent="world">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:ur_table>
+
+  <!-- Put the robot in the scene -->
+  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
+  <xacro:ur_robot name="ur5e" parent="robot_mount" tf_prefix=""  
+  joint_limits_parameters_file="$(find ur_description)/config/ur5e/joint_limits.yaml"
+  kinematics_parameters_file="$(find ur_description)/config/ur5e/default_kinematics.yaml"
+  physical_parameters_file="$(find ur_description)/config/ur5e/physical_parameters.yaml"
+  visual_parameters_file="$(find ur_description)/config/ur5e/visual_parameters.yaml">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:ur_robot>
+
+
+
+  <!-- Force sensor -->
+  <xacro:arg name="prefix" default="ft_sensor0"/>
+
+  <xacro:include filename="$(find rokubimini_description)/urdf/BFT_SENS_SER_M8.urdf.xacro" />
+  <xacro:BFT_SENS_SER_M8 prefix="$(arg prefix)" />
+
+  <joint name="world_joint" type="fixed">
+    <parent link="flange" />
+    <child link = "$(arg prefix)_mounting" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 ${pi/2} 0.0" />
+  </joint>
+
+  <!-- Attaching end effector -->
+  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_2f_85_macro.urdf.xacro"/>
+  <xacro:robotiq_gripper name="RobotiqGripperHardwareInterface" prefix="" parent="$(arg prefix)_wrench" >
+        <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:robotiq_gripper>
+
+
+
+</robot>
