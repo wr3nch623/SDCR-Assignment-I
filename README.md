@@ -35,6 +35,8 @@ bash install_dependencies.sh
 
 # Documentation
 
+## Useful commands to check features
+
 # Team
 Me, myself and I. And occasionally a brainwave from a tired neuron
 
