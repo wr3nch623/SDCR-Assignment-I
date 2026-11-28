@@ -8,6 +8,9 @@
 ROS2 Humble on Ubuntu 22.04
 Coppeliasim 4.10 using ZeroMQ to avoid the wrapper problems that does not support ROS2 or something 
 
+In coppeliasim there is the joint base_link_respondable that has the respondable disabled cause otherwise it would move the robotic arm up against gravity for some reasons. Also Newton is the default physics engine cause bullet would make the scene fall apart. 
+
+
 ## Install dependencies
 ADd packages to install that comes from apt
 
@@ -44,7 +47,7 @@ Me, myself and I. And occasionally a brainwave from a tired neuron
 # IDEAS ON HOW TO MOVE ON
 
 - [x] modify the scene
-- [ ] Add the initial position to the robotic arm
+- [x] Add the initial position to the robotic arm
 - [ ] Fix Coppeliasim import with plugin cause thank you coppeliasim (probably not needed) 
 - [ ] write some controls to control the robotic arm 
 - [ ] Profit?
